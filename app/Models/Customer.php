@@ -9,11 +9,31 @@ class Customer extends Model
     //
     protected $table = 'customers';
     protected $fillable = [
-        'first_name','last_name','password','gender','age','image','date_of_birth','time_of_birth','place_of_birth','email','zodiac_id','bio','phone_number','date_month_twins','year_twins','month_twins','fb_id','fb_username'
+        'first_name','last_name','gender','age','image','email','zodiac_id','bio','phone_number','fb_id','fb_username','token','date_of_birth','time_of_birth','place_of_birth'
     ];
 
-     public function zodiacs()
+    public function zodiacs()
 	{
 	    return $this->belongsTo(Zodiac::class, 'zodiac_id');
 	}
+
+	public function threads()
+	{
+	    return $this->belongsTo(UserThread::class, 'id');
+	}
+
+	public function birthInfo()
+	{
+	    return $this->belongsTo(CustomerBirthUpdate::class, 'id');
+
+	}
+
+	public function deviceInfo()
+	{
+	    return $this->belongsTo(Device::class, 'customer_id');
+
+	}
+	
+
+	
 }

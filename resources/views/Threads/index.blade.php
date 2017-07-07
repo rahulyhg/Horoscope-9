@@ -7,20 +7,18 @@
 			<tr>
 				<th>SN</th>
 				<th>Name</th>
-				<th>UserName</th>
-				<th>Email</th>
+				
 				<th>Action</th>
 			</tr>
 		</thead>
 		<tbody>
-			@forelse ($users as $key => $user)
+			@forelse ($threads as $key => $thread)
 				<tr>
 					<td>{{$key+1}}</td>
-					<td>{{$user->name}}</td>
-					<td>{{$user->username}}</td>
-					<td>{{$user->email}}</td>
+					<td>{{$thread->name}}</td>
+					
 					<td>
-						<a href="{{route('users.edit',$user->id)}} " class="btn btn-primary">Edit</a> / <a href="{{route('users.destroy',$user->id)}} " class="btn btn-danger">Delete</a>
+						<a href="{{route('threads.edit',$thread->id)}} " class="btn btn-primary">Edit</a> / <a href="{{route('threads.destroy',$thread->id)}} " class="btn btn-danger">Delete</a>
 					</td>
 				</tr>
 			@empty
@@ -28,8 +26,7 @@
 					<td>-</td>
 					<td>-</td>
 					<td>-</td>
-					<td>-</td>
-					<td>-</td>
+					
 				</tr>
 			@endforelse
 		</tbody>

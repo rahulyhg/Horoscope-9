@@ -28,6 +28,8 @@ class CreateHoroscopesTable extends Migration
             $table->longText('makara');
             $table->longText('kumbha');
             $table->longText('meena');
+            $table->string('month');
+            $table->string('year');
             $table->enum('week_number',range(1,52))->nullable();
             $table->enum('horoscope_type',['daily','weekly','monthly','yearly']);
             $table->timestamps();

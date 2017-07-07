@@ -18,7 +18,7 @@ class ApiController extends Controller
         return response()->json([
             'status' => 'failure',
             'status_code' => $code,
-            'message' => $message ? JsonResponse::$statusTexts[$code] : 'Internal Server Error',
+            'message' => $message ? $message : 'Internal Server Error',
             'errors' => $errors,
         ], isset(JsonResponse::$statusTexts[$code]) ? $code : JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
     }

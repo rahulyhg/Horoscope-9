@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Zodiac;
+use App\Models\Thread;
 
 class ZodiacController extends Controller
 {
@@ -11,6 +12,7 @@ class ZodiacController extends Controller
 
     public function __construct(){
         $this->zodiacs = new Zodiac();
+        $this->threads = new Thread();
     }
     /**
      * Display a listing of the resource.
@@ -43,20 +45,19 @@ class ZodiacController extends Controller
      */
     public function store(Request $request)
     {
-        $this->zodiacs->create($request->all());
-        
-        return redirect('zodiacs');
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $request['compatible_zodiacs'] = json_encode($request->compatible_zodiacs);
+        $new_inserted_item = $this->zodiacs->create($request->all());
+
+        $check_if_zodiac_existed = $this->threads->where('name',$new_inserted_item->name)->get();
+        if (!empty($check_if_zodiac_existed) ) {
+            return redirect('zodiacs');
+        }
+        else{
+            $this->threads['name'] = $new_inserted_item->name;
+            $this->threads->save();
+        return redirect('zodiacs');
+        }
     }
 
     /**
@@ -91,18 +92,10 @@ class ZodiacController extends Controller
         $updated_zodiac->lucky_number = $request->lucky_number;
         $updated_zodiac->lucky_color = $request->lucky_color;
         $updated_zodiac->color_description = $request->color_description;
+        $updated_zodiac->compatible_zodiacs = json_encode($request->compatible_zodiacs);
+
         $updated_zodiac->save();
         return redirect('zodiacs');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

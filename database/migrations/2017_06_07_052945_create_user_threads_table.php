@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessageFlagsTable extends Migration
+class CreateUserThreadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateMessageFlagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('message_flags', function (Blueprint $table) {
+        Schema::create('user_threads', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('thread_id')->unsigned();
+            $table->foreign('thread_id')->references('id')->on('threads');
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->integer('message_id')->unsigned();
-            $table->foreign('message_id')->references('id')->on('messages');
             $table->timestamps();
-
         });
     }
 
@@ -31,6 +30,6 @@ class CreateMessageFlagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message_flags');
+        Schema::dropIfExists('user_threads');
     }
 }

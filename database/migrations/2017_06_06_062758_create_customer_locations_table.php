@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessageFlagsTable extends Migration
+class CreateCustomerLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateMessageFlagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('message_flags', function (Blueprint $table) {
+        Schema::create('customer_locations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');
-            $table->integer('message_id')->unsigned();
-            $table->foreign('message_id')->references('id')->on('messages');
+            $table->float('lat', 9, 7);
+            $table->float('lon', 9, 7);
+            $table->string('location');
             $table->timestamps();
-
         });
     }
 
@@ -31,6 +31,6 @@ class CreateMessageFlagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message_flags');
+        Schema::dropIfExists('customer_locations');
     }
 }

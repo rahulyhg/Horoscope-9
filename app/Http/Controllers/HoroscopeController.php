@@ -31,6 +31,12 @@ class HoroscopeController extends Controller
 
     public function dailyStore(Request $request) 
     {
+        $week = date('W',strtotime($request->for_date));
+        $month = date('F',strtotime($request->for_date));
+        $year = date('Y',strtotime($request->for_date));
+        $request['week_number'] = $week;
+        $request['month'] = $month;
+        $request['year'] = $year;
         $this->horoscope->create($request->all());
         return redirect('horoscope/daily');
 
@@ -68,7 +74,11 @@ class HoroscopeController extends Controller
 
       public function weeklyStore(Request $request)
     {
-        $week = date("W", strtotime($request->for_date));
+        $week = date('W',strtotime($request->for_date));
+        $month = date('F',strtotime($request->for_date));
+        $year = date('Y',strtotime($request->for_date));
+        $request['month'] = $month;
+        $request['year'] = $year;
         $request['week_number'] = $week;
         $this->horoscope->create($request->all());
         return redirect('horoscope/weekly');
@@ -114,7 +124,11 @@ class HoroscopeController extends Controller
 
     public function monthlyStore(Request $request) 
     {
-        $week = date("W", strtotime($request->for_date));
+        $week = date('W',strtotime($request->for_date));
+        $month = date('F',strtotime($request->for_date));
+        $year = date('Y',strtotime($request->for_date));
+        $request['month'] = $month;
+        $request['year'] = $year;
         $request['week_number'] = $week;
         $this->horoscope->create($request->all());
         return redirect('horoscope/monthly');
@@ -159,7 +173,11 @@ class HoroscopeController extends Controller
 
     public function yearlyStore(Request $request) 
     {
-       $week = date("W", strtotime($request->for_date));
+        $week = date('W',strtotime($request->for_date));
+        $month = date('F',strtotime($request->for_date));
+        $year = date('Y',strtotime($request->for_date));
+        $request['month'] = $month;
+        $request['year'] = $year;
         $request['week_number'] = $week;
         $this->horoscope->create($request->all());
         return redirect('horoscope/yearly');

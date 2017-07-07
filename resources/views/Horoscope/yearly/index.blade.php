@@ -1,8 +1,8 @@
-@extends('layouts.mods')
+@extends('layouts.app')
 
 @section('content')
 		<div>
-			<a href="{{route('weeklycreate')}}" class="btn btn-primary">Add weekly Hororscope</a>
+			<a href="{{route('yearlycreate')}}" class="btn btn-primary">Add weekly Hororscope</a>
 		</div>
 		<table class="table table-hover table-bordered table-striped">
 				<tr>
@@ -23,7 +23,7 @@
 					<th>Action</th>
 				</tr>
 				
-				@forelse ($weekly as $key => $value)
+				@forelse ($yearly as $key => $value)
 					<tr>
 						<td>
 							{{$key+1}}

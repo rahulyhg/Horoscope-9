@@ -19,7 +19,6 @@ class CreateCustomerTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique()->nullable();
-            $table->string('password');
             $table->enum('gender',['male','female','unspecified'])->nullable();
             $table->string('date_of_birth')->nullable();
             $table->string('time_of_birth')->nullable();
@@ -30,6 +29,10 @@ class CreateCustomerTable extends Migration
             $table->string('image')->nullable();
             $table->text('bio')->nullable();
             $table->string('phone_number')->nullable();
+            $table->string('fb_id');
+            $table->string('fb_username');
+            $table->string('token');
+            
             $table->rememberToken();
             $table->timestamps();
         });

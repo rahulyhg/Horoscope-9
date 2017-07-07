@@ -13,16 +13,6 @@
 			</div>
 		</div>
 
-		<div class="form-group">
-			<div class="col-md-6">
-				{!! Form::label('password', 'Password',['class'=>'control-label']) !!}
-				{!! Form::password('password',array('class'=>'form-control ','data-trigger'=>'change focusout','data-required-message'=>'Please enter password')) !!}
-			</div>
-			<div class="col-md-6">
-				{!! Form::label('confirm', 'Confirm Password',['class'=>'control-label']) !!}
-				{!! Form::password('confirm_password',array('class'=>'form-control ','data-trigger'=>'change focusout','data-required-message'=>'Please enter password')) !!}
-			</div>
-		</div>
 
 		<div class="form-group">
 		    <div class="col-md-6">

@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->user = new User();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class UserController extends Controller
     public function index()
     {
         //
-        return view('Users/index');
+        $users = $this->user->all();
+        return view('Users/index',compact('users'));
     }
 
     /**
@@ -25,6 +31,8 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('Users/create');
+
     }
 
     /**
@@ -35,7 +43,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // //
+        // echo "<pre>";
+        // print_r($request->toArray());
+        // die;
+        if ($request->password === $request->confirm_password) {
+            return User::create([
+                'name' => $data['name'],
+                'username' => $data['username'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
+        }
     }
 
     /**
@@ -57,7 +76,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return View('Users/edit');
     }
 
     /**
@@ -70,6 +89,8 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = $this->user->find($id);
+        // $user->name = $request->
     }
 
     /**

@@ -20,6 +20,7 @@ class CreateDevicesTable extends Migration
             $table->string('push_id')->nullable();
             $table->string('device_id');
             $table->enum('device_type',['android','ios']);
+            $table->string('token');
             $table->timestamps();
         });
     }

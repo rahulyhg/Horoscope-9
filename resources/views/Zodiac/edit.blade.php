@@ -52,6 +52,8 @@
 		        </div>
 		    </div>
 
+
+
 		    <div class="form-group">
 				<div class="row">
 					<div class="col-md-2">
@@ -102,6 +104,27 @@
 	            <span class="help-block"></span>
 	        </div>
 	    </div>
+
+	    <div class="input_fields_wrape form-group">
+	        <label class="col-xs-2 control-label" for="compatible_zodiacs">Compatible Zodiacs</label>
+
+		    <div class="col-lg-10 input_fields_wrap">
+		    	<select name="compatible_zodiacs[]" multiple class="form-control">
+		    		<option value="1">Mesha</option>
+		    		<option value="2">Brisha</option>
+		    		<option value="3">Mithuna</option>
+		    		<option value="4">karkata</option>
+		    		<option value="5">Simha</option>
+		    		<option value="6">Kanya</option>
+		    		<option value="7">Tula</option>
+		    		<option value="8">Brishika</option>
+		    		<option value="9">Dhanu</option>
+		    		<option value="10">Makara</option>
+		    		<option value="11">Kumbha</option>
+		    		<option value="12">Meena</option>
+		    	</select>
+		    </div>
+		</div>
 
 	    <div class="form-group">
 	    	<label class="col-xs-2 control-label" for="zodiac-submit">Submit</label>

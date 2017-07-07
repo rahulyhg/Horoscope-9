@@ -9,6 +9,6 @@ class Horoscope extends Model
     //
     protected $table = 'horoscopes';
      protected $fillable = [
-        'for_date','mesha', 'brisha','mithuna','karkata','simha','kanya','tula','brishika','dhanu','makara','kumbha','meena','week_number','horoscope_type'
+        'for_date','mesha', 'brisha','mithuna','karkata','simha','kanya','tula','brishika','dhanu','makara','kumbha','meena','week_number','horoscope_type','month','year'
     ];
 }

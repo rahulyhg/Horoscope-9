@@ -163,6 +163,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+        Kawankoding\Fcm\Providers\FcmServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +231,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Input' => Illuminate\Support\Facades\Input::class,
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'Fcm' => Kawankoding\Fcm\Facades\Fcm::class,
 
     ],
 

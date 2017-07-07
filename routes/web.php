@@ -64,19 +64,42 @@ Route::group(['middleware'=>['auth'],'prefix'=>'horoscope'],function(){
 
 Route::group(['namespace'=>'Api','prefix'=>'api/customers'],function(){
 Route::any('store','ApiCustomerController@store');
-Route::get('show/{id}','ApiCustomerController@show');
+Route::post('show','ApiCustomerController@show');
+Route::patch('update/{id}','ApiCustomerController@update');
 Route::get('/','ApiCustomerController@index');
 // Route::get('twins','ApiCustomerController@getTwins');
-Route::any('twins/{id}','ApiCustomerController@getExactTwins');
+Route::post('twins/{id}','ApiCustomerController@getExactTwins');
+// Route::any('yeartwins/{id}','ApiCustomerController@getYearTwins');
 // Route::post('exacttwins/{id}','ApiCustomerController@getExactTwins');
+Route::post('peoplenearby','ApiCustomerController@getLocation');
 });
 
-Route::group(['namespace'=>'Api','prefix'=>'api'],function(){
-Route::get('dailyhoroscope','ApiHoroscopeController@dailyIndex'); 
-Route::get('weeklyhoroscope','ApiHoroscopeController@weeklyIndex'); 
-Route::get('monthlyhoroscope','ApiHoroscopeController@monthlyIndex'); 
-Route::get('yearlyhoroscope','ApiHoroscopeController@yearlyIndex'); 
+Route::group(['middleware'=>['auth']],function(){
+    Route::resource('threads','ThreadController');
+})
 
-Route::any('horoscope','ApiHoroscopeController@getDailyHoroscope');
+Route::group(['namespace'=>'Api','prefix'=>'api'],function(){
+Route::post('dailyhoroscope','ApiHoroscopeController@dailyIndex'); 
+Route::post('weeklyhoroscope','ApiHoroscopeController@weeklyIndex'); 
+Route::post('monthlyhoroscope','ApiHoroscopeController@monthlyIndex'); 
+Route::post('yearlyhoroscope','ApiHoroscopeController@yearlyIndex'); 
+
+Route::post('horoscope','ApiHoroscopeController@getHoroscope');
+});
+
+
+Route::group(['namespace'=>'Api','prefix' =>'api/friends'],function(){
+    Route::post('store','ApiFriendsController@store');
+    Route::post('requestack','ApiFriendsController@friendshipAck');
+    Route::post('allFriends/{id}','ApiFriendsController@allFriends');
+    Route::post('pending/{id}','ApiFriendsController@pendingRequests');
+    Route::post('blocked/{id}','ApiFriendsController@blockedList');
+    Route::post('deletereq','ApiFriendsController@deleteRequest');
+
+});
+
+Route::group(['namespace'=>'Api','prefix'=>'api/devices'],function(){
+    Route::post('store','ApiDeviceController@store');
+
 });
 

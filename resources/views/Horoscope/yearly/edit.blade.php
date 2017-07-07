@@ -1,4 +1,4 @@
-@extends('layouts.mods')
+@extends('layouts.app')
 	@section('content')
 
 

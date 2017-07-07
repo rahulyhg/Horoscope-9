@@ -24,6 +24,7 @@ class CreateZodiacsTable extends Migration
             $table->enum('lucky_color',['red', 'white', 'green', 'yellow', 'grey', 'purple', 'black', 'purple_and_black', 'red_and_grey']);
             $table->text('color_description')->nullable();
             $table->text('traits')->nullable();
+            $table->string('compatible_zodiacs');
             $table->timestamps();
         });
     }
