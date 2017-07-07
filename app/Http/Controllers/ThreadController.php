@@ -9,7 +9,7 @@ use App\Models\Thread;
 use App\Models\UserThread;
 
 
-class ApiThreadController extends ApiController
+class ThreadController
 {
    public function __construct()
     {
@@ -31,7 +31,10 @@ class ApiThreadController extends ApiController
 
    public function store(Request $request)
    {
-        $threads = $this->thread->firstorcreate($request)
+        // echo "<pre>";
+        // print_r($request->toArray());
+        // die;
+        $threads = $this->thread->create($request->toArray());
         if (empty(trim($threads))) {
             return $this->fail("Sorry Thread Couldnot be created");
         }
@@ -40,13 +43,26 @@ class ApiThreadController extends ApiController
         }
    }
 
-   public function update($id)
+   public function edit($id)
+   {
+      $thread = $this->thread->find($id);
+
+      return View('Threads.edit',compact('thread'));
+   }
+
+   public function update(Request $request,$id)
    {
       $thread = $this->thread->find($id);
       $thread->name = $request->name;
       $thread->save();
-      return $this->success($thread);
+      return redirect('threads');
    }
+
+     public function destroy($id)
+     {
+       $thread = $this->thread->destroy($id);
+        return redirect('threads');
+     }
 
 
     

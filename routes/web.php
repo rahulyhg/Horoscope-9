@@ -76,7 +76,7 @@ Route::post('peoplenearby','ApiCustomerController@getLocation');
 
 Route::group(['middleware'=>['auth']],function(){
     Route::resource('threads','ThreadController');
-})
+});
 
 Route::group(['namespace'=>'Api','prefix'=>'api'],function(){
 Route::post('dailyhoroscope','ApiHoroscopeController@dailyIndex'); 
@@ -100,6 +100,7 @@ Route::group(['namespace'=>'Api','prefix' =>'api/friends'],function(){
 
 Route::group(['namespace'=>'Api','prefix'=>'api/devices'],function(){
     Route::post('store','ApiDeviceController@store');
+    Route::post('upadte','ApiDeviceController@store');
 
 });
 

@@ -43,13 +43,15 @@ class ApiDeviceController extends ApiController
                 $device->save();  
               }
             else{
-              $device->push_id = NULL;
+              $device->push_id = '';
               $device->save();
             }
             return $this->success($device);  
           }
     
    }
+
+   
   
 
     
